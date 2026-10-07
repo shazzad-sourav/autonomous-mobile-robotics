@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- RoboCup 2009 SPL field with six construction cones (Gazebo classic).
+     The two models download from the Gazebo model database on first launch. -->
+<sdf version="1.6">
+  <world name="default">
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+
+    <include>
+      <uri>model://robocup09_spl_field</uri>
+      <name>spl_field</name>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <include><uri>model://construction_cone</uri><name>cone_1</name><pose>-1.0  0.8 0 0 0 0</pose></include>
+    <include><uri>model://construction_cone</uri><name>cone_2</name><pose>-0.2 -1.0 0 0 0 0</pose></include>
+    <include><uri>model://construction_cone</uri><name>cone_3</name><pose> 0.6  0.3 0 0 0 0</pose></include>
+    <include><uri>model://construction_cone</uri><name>cone_4</name><pose> 1.5 -0.7 0 0 0 0</pose></include>
+    <include><uri>model://construction_cone</uri><name>cone_5</name><pose> 1.9  1.2 0 0 0 0</pose></include>
+    <include><uri>model://construction_cone</uri><name>cone_6</name><pose>-1.8 -1.3 0 0 0 0</pose></include>
+
+    <physics type="ode">
+      <real_time_update_rate>1000.0</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </physics>
+
+    <gui fullscreen="0">
+      <camera name="user_camera">
+        <pose>0 -6.5 6.0 0 0.75 1.5708</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+  </world>
+</sdf>
