@@ -51,7 +51,8 @@ python track_arrows_yolo.py --source samples/right.jpg --save out.jpg
 
 ## 2. ArUco landmark navigation (ROS 2)
 
-`aruco-navigation/aruco_navigator.py` is a ROS 2 Humble node. The robot starts anywhere in a
+`aruco-navigation/aruco_navigator.py` is a ROS 2 Humble node, developed in Gazebo and then
+run on a physical AgileX LIMO for the final demo. The robot starts anywhere in a
 square area with ArUco markers 1–4 (4×4 dictionary, 16 cm) in the corners. It runs a small
 state machine:
 
@@ -67,9 +68,11 @@ A live OpenCV map shows the markers, the robot's path and the centroid, and is s
 
 **Results:**
 
-- **TurtleBot3 Waffle Pi in Gazebo:** found all four markers and reached the centroid.
-- **AgileX LIMO:** found all four markers and computed the centroid correctly. However, it
-  turned to the wrong heading in the final step and drove away from the goal.
+- **TurtleBot3 Waffle Pi in Gazebo (simulation):** found all four markers and reached the
+  centroid.
+- **Physical AgileX LIMO (final demo):** found all four markers and computed the centroid
+  correctly. However, it turned to the wrong heading in the final step and drove away from
+  the goal.
 
 The team measured the recorded marker positions to be accurate to about 2–3 cm.
 
@@ -91,7 +94,7 @@ That API is available on the LIMO's OpenCV 4.5.4, or via
 - The LiDAR is not used, so the robot does not avoid obstacles.
 - The final approach turns until a marker is in view rather than steering to the computed
   centroid. That approach depends on the markers forming a square, and it is the step that
-  failed on the LIMO.
+  failed on the physical LIMO.
 - This version fixes a bug in the original submission: the half-diagonal distance used a
   marker's x coordinate in place of its y coordinate. The fix has not been re-run on a
   robot.
